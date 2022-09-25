@@ -9,16 +9,26 @@ const Search = () => {
         console.log(id);
     };
 
-    useEffect(() => {
-        (async () => {
-            const char = await axios.get(
-                "https://api.jikan.moe/v4/characters/2727"
-            );
-            console.log(char.data.data)
-            setChar(char.data.results);
-        })();
-    }, []);
+    const getChar = async (id) => {
+        try{
+            const fetch = await axios.get(`https://api.jikan.moe/v4/characters/${id}`)
+            setChar(fetch.data.data);
+        } catch(error){
+            console.log(error.response.data)
+        }
+    };
 
+    // useEffect(getChar, []);
+
+    console.log(char)
+    // useEffect(() => {
+    //     (async () => {
+    //         const char = await axios.get(
+    //             "https://api.jikan.moe/v4/characters/2727"
+    //         );
+    //         setChar(char.data.data);
+    //     })();
+    // }, []);
 
 // ~150k+ characters
     return(
@@ -30,7 +40,7 @@ const Search = () => {
                 placeholder = "char ID"
                 onChange = {e => setId(e.target.value)}
             />
-            <button onClick = {() => handleInput()}>Add</button>
+            <button onClick = {() => getChar(id)}>Add</button>
         </div>
     )
 }
