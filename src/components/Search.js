@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Character from './Character.js';
+import './sass/Search.sass';
 
 const Search = () => {
     const [id, setId] = useState({});
     const [char, setChar] = useState([]);
     const [idList, setIdList] = useState(new Set())
-
+console.log(char)
+    // fetches character data using input field ID code
     const getChar = async (id) => {
         if(idList.has(id)){
 
@@ -45,22 +47,48 @@ const Search = () => {
         }
     };
 
+    // handles submitting API call using "enter" key instead of button
+    useEffect(() => {
+        const keyDownHandler = event => {
+            if(event.key === "Enter"){
+                event.preventDefault();
+                document.getElementsByClassName("add")[0].click();
+            }
+        }
+        
+        document.addEventListener('keydown', keyDownHandler);
+
+        return () => {
+            document.removeEventListener('keydown', keyDownHandler);
+        };
+    }, []);
+
 // ~150k+ characters as of Oct 2022
     return(
         <div>
-            <input
-                type = "number"
-                min = "0"
-                onKeyDown={(e) => (e.key === 'e' || e.key === '-' || e.key === "+" || e.key === ".") && e.preventDefault() }
-                placeholder = "char ID"
-                onChange = {e => setId(e.target.value)}
-            />
-            <button onClick = {() => getChar(id)}>Add</button>
-            {char.map((char, index) => (
-                <div key = {index}>
-                    {char}
-                </div>
-            ))}
+            <div className = "searchBar">
+                <input
+                    type = "number"
+                    min = "0"
+                    onKeyDown={(e) => (e.key === 'e' || e.key === '-' || e.key === "+" || e.key === ".") && e.preventDefault() }
+                    placeholder = "char ID"
+                    onChange = {e => setId(e.target.value)}
+                />
+                <button
+                    type = "submit"
+                    className = "add"
+                    onClick = {() => getChar(id)}
+                >
+                    Add
+                </button>
+            </div>
+            <div className = "charCollection">
+                {char.map((char, index) => (
+                    <div key = {index}>
+                        {char}
+                    </div>
+                ))}
+            </div>
         </div>
     )
 }

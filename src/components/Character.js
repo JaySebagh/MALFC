@@ -1,8 +1,10 @@
+import './sass/Character.sass'
+
 const Character = (char) => {
     char = char.char
     
     return(
-        <div>
+        <div className = "charCard">
             <a
                 href = {char.url}
                 target = "_blank"
@@ -11,9 +13,10 @@ const Character = (char) => {
                 <img
                     alt = {char.name}
                     src = {char.images.jpg.image_url}
+                    className = "charImg"
                 />
             </a>
-            <p>{char.name}</p>
+            <p className="charName">{char.name}</p>
         </div>
     )
 }
