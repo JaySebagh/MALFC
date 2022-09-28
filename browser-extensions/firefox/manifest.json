@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "MALFC",
+    "version": "1.0",
+
+    "description": "Adds a red border to myanimelist.net",
+    
+    "icons": {
+        "48": "icons/malfc-48.png"
+    },
+
+    "content_scripts": [
+        {
+            "matches": ["*://*.myanimelist.net/*"],
+            "js": ["borderify.js"]
+        }
+    ]
+}
