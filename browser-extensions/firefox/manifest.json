@@ -3,7 +3,7 @@
     "name": "MALFC",
     "version": "1.0",
 
-    "description": "Adds a red border to myanimelist.net",
+    "description": "MALFC browser extension for myanimelist.net",
     
     "icons": {
         "48": "icons/malfc-48.png"
@@ -11,8 +11,8 @@
 
     "content_scripts": [
         {
-            "matches": ["*://*.myanimelist.net/*"],
-            "js": ["borderify.js"]
+            "matches": ["*://*.myanimelist.net/character/*"],
+            "js": ["malfc.js"]
         }
     ]
 }
