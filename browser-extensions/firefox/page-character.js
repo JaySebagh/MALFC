@@ -6,7 +6,7 @@ const char = document.getElementsByClassName("title-name h1_bold_none")[0];
 
 // handles inserting button
 Element.prototype.appendAfter = function(element) {
-    element.parentNode.insertBefore(this, element.nextSibling);
+  element.parentNode.insertBefore(this, element.nextSibling);
 }, false;
 
 // create button
@@ -21,13 +21,13 @@ button.style.borderRadius = "5px";
 
 // handle button click
 button.addEventListener("click", function(){
-    // get current URL
-    const fetchUrl = window.location.href;
-    // grab character ID from url
-    let trim = fetchUrl.split('/').slice(4,5)
-    // MAL page console is messy so using alert instead of console.log()
-    alert(`${trim}`)
-  });
+  // get current URL
+  const fetchUrl = window.location.href;
+  // grab character ID from url
+  let trim = fetchUrl.split('/').slice(4,5)
+  // MAL page console is messy so using alert instead of console.log()
+  alert(`${trim}`)
+});
 
 // append button after character name
 button.appendAfter(char);

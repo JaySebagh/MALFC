@@ -12,7 +12,11 @@
     "content_scripts": [
         {
             "matches": ["*://*.myanimelist.net/character/*"],
-            "js": ["malfc.js"]
+            "js": ["page-character.js"]
+        },
+        {
+            "matches": ["*://*.myanimelist.net/anime/*"],
+            "js": ["page-anime.js"]
         }
     ]
 }
