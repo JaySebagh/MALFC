@@ -15,7 +15,12 @@
             "js": ["page-character.js"]
         },
         {
+            "matches": ["*://*.myanimelist.net/anime/**characters*"],
+            "js": ["page-characters-full.js"]
+        },
+        {
             "matches": ["*://*.myanimelist.net/anime/*"],
+            "exclude_matches": ["*://*.myanimelist.net/anime/**characters*"],
             "js": ["page-anime.js"]
         }
     ]

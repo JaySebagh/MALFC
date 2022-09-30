@@ -5,7 +5,7 @@ document.body.style.border = "5px solid red";
 const char = document.getElementsByClassName("title-name h1_bold_none")[0];
 
 // handles inserting button
-Element.prototype.appendAfter = function(element) {
+Element.prototype.appendAfter = function(element){
   element.parentNode.insertBefore(this, element.nextSibling);
 }, false;
 
